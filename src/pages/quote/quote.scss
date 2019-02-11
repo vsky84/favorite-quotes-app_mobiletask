@@ -1,3 +1,17 @@
 page-quote {
-
+    .quote{
+        text-align: justify
+    }
+    .quoteCard{
+        padding: 16pt
+    }
+    .authorName {
+        text-align: right;
+        color: #808080;
+        &::before{
+            content: "-";
+        }
+    }
+    .favoriteButton {
+    }
 }

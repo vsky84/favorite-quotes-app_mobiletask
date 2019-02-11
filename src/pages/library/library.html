@@ -13,7 +13,7 @@
 <ion-content padding>
 <h3>Select your favorite quotes</h3>
 <ion-list>
-  <button ion-item *ngFor="let qc of quoteCollection">
+  <button ion-item *ngFor="let qc of quoteCollection" (click)="onCategoryClicked()">
     <ion-icon [name]="qc.icon" item-left></ion-icon>
     <h2>{{qc.category | uppercase}}</h2>
     <p *ngIf="qc.quotes.length > 0">{{qc.quotes.length}} Quote(s)</p>
