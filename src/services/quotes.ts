@@ -4,11 +4,20 @@ export class QuotesService{
     private favoriteQuotes: Quote[]=[];
     
     addQuoteToFavorites(quote: Quote) {
-        this.favoriteQuotes.push(quote);
+        console.log(this.favoriteQuotes.indexOf(quote)>-1);
+        if(!(this.favoriteQuotes.indexOf(quote)>-1)) {
+            this.favoriteQuotes.push(quote);
+            console.log(this.favoriteQuotes);
+        }
+        else console.log("WARN: QUOTE EXIST IN FAVORITE");
     }
 
     removeQuoteFromFavorites(quote: Quote){
-        //TODO: remove quote in key
+        if(this.favoriteQuotes.indexOf(quote)>-1) {
+            this.favoriteQuotes.splice(this.favoriteQuotes.indexOf(quote),1);
+            console.log(this.favoriteQuotes);
+        }
+        else console.log("ERROR: QUOTE NOT FOUND IN FAVORITE")
     }
 
     getAllFavoriteQuotes() {
@@ -16,7 +25,7 @@ export class QuotesService{
     }
 
     isFavorite(quote: Quote) {
-        //TODO: check if quote is favorite or not
+        return this.favoriteQuotes.indexOf(quote)>-1;
     }
 
 }

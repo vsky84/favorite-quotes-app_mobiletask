@@ -7,14 +7,15 @@ page-quote {
     }
     .authorName {
         text-align: right;
+        text-transform: uppercase;
         color: #808080;
         &::before{
-            content: "-";
+            content: "- ";
         }
     }
     .favoriteButton {
-        float:right;
-        border-color: transparent;
+        //float:right;
+        //border-color: transparent;
         padding:0pt;
         text-transform: none;
     }

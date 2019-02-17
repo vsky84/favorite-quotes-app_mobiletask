@@ -11,13 +11,20 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="quoteCard" *ngFor="let item of ['1','2','3']">
-    <ion-card-header>#{{item}}</ion-card-header>
+  <ion-card class="quoteCard" *ngFor="let ql of quoteList;let i=index">
+    <ion-card-header>#{{ql.id}}</ion-card-header>
     <ion-card-content>
-      <p class="quote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis veniam at officia atque pariatur, accusamus quibusdam labore! Doloremque, reprehenderit sapiente laborum quam ipsa reiciendis perferendis! Officiis, inventore iusto? Veritatis, harum? This is content of header: {{item}}</p>
-      <p class="authorName">Author name</p>
+      <p class="quote">{{ql.text}}</p>
+      <p class="authorName">{{ql.person}}</p>
       <br>
-      <button ion-button outline class="favoriteButton">Favorite</button>
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col text-right no-padding>
+            <button *ngIf="OnQuoteCheckFavorite(ql)==false" ion-button clear small color="primary" outline #i (click)="OnFavorite(i,ql)" class="favoriteButton">Favorite</button>
+            <button *ngIf="OnQuoteCheckFavorite(ql)"ion-button clear small color="danger" outline #i (click)="OnFavorite(i,ql)" class="favoriteButton">Unfavorite</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 </ion-content>

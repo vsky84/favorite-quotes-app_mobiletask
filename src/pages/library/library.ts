@@ -26,7 +26,8 @@ export class LibraryPage implements OnInit{
   ionViewDidLoad() {
     console.log('ionViewDidLoad LibraryPage');
   }
-  onCategoryClicked() {
-    this.navCtrl.push(QuotePage);
+  onCategoryClicked(i) {
+    console.log(this.quoteCollection[i]);
+    this.navCtrl.push(QuotePage,this.quoteCollection[i]);
   }
 }
