@@ -1,7 +1,8 @@
 import { QuotesService } from './../../services/quotes';
 import { Quote } from './../../data/quote.interface';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
+import { platformBrowser } from '@angular/platform-browser';
 /**
  * Generated class for the QuotesPage page.
  *
@@ -16,7 +17,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class QuotesPage {
   quoteList: Quote[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private quotesService: QuotesService) {
+  constructor(private platform: Platform, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private quotesService: QuotesService, private changeDetect: ChangeDetectorRef) {
   }
 
   OnFavorite(quoteChoice) {
@@ -69,7 +70,7 @@ export class QuotesPage {
     return this.quotesService.isFavorite(quote);
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesPage');
+    console.log('ionViewDidLoad QuotesPage =============================');
     this.quoteList=this.navParams.get('quotes');
   }
 

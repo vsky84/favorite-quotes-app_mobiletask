@@ -28,7 +28,8 @@ export class QuotesService{
     // saveToCache() {
     //     window.localStorage.setItem('favorites',JSON.stringify(this.favoriteQuotes))
     // }
-    isFavorite(quote: Quote) {
+    isFavorite(quote: Quote) : boolean {
+        // console.log("Key: " + quote.person +" result: " + (this.favoriteQuotes.indexOf(quote)>-1));
         return this.favoriteQuotes.indexOf(quote)>-1;
     }
     // initializeFavorites() {
