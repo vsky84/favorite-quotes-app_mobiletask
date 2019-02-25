@@ -6,10 +6,18 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>settingsPage</ion-title>
+      <ion-buttons left>
+        <button ion-button menuToggle >
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Alternative Background</ion-label>
+    <ion-toggle (ionChange)="OnToggle($event)"></ion-toggle>
+  </ion-item>
 </ion-content>

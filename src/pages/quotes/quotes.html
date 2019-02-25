@@ -1,15 +1,31 @@
 <!--
-  Generated template for the QuotesPage page.
+  Generated template for the QuotePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>quotesPage</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar>
+      <ion-title>Quote List</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-card class="quoteCard" *ngFor="let ql of quoteList">
+      <ion-card-header>#{{ql.id}}</ion-card-header>
+      <ion-card-content>
+        <p class="quote">{{ql.text}}</p>
+        <p class="authorName">{{ql.person}}</p>
+        <br>
+        <ion-grid no-padding>
+          <ion-row no-padding>
+            <ion-col text-right no-padding>
+              <button *ngIf="OnQuoteCheckFavorite(ql)==false" ion-button clear small color="primary" outline (click)="OnFavorite(ql)" class="favoriteButton">Favorite</button>
+              <button *ngIf="OnQuoteCheckFavorite(ql)"ion-button clear small color="danger" outline (click)="OnUnfavorite(ql)" class="favoriteButton">Unfavorite</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

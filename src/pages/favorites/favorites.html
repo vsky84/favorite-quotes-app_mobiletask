@@ -6,10 +6,28 @@
 -->
 <ion-header>
   <ion-navbar>
+      <ion-buttons left>
+        <button ion-button menuToggle >
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
     <ion-title>Favorite Quotes</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item-sliding *ngFor="let favoriteQuote of favoriteQuoteList ">
+      <button [color]="setBgColor()" ion-item (click)="OnDetails(favoriteQuote)">
+        <h2>{{favoriteQuote.text}}</h2>
+        <p class="authorName">{{favoriteQuote.person}}</p>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="OnUnfavorite(favoriteQuote)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

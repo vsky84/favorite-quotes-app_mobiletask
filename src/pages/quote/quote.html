@@ -6,25 +6,30 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Quote List</ion-title>
+    <ion-title>Quote Modal</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="quoteCard" *ngFor="let ql of quoteList;let i=index">
-    <ion-card-header>#{{ql.id}}</ion-card-header>
+  <ion-card>
     <ion-card-content>
-      <p class="quote">{{ql.text}}</p>
-      <p class="authorName">{{ql.person}}</p>
+      <p class="quote">{{selectedQuote.text}}</p>
+      <p class="authorName">{{selectedQuote.person}}</p>
       <br>
       <ion-grid no-padding>
         <ion-row no-padding>
-          <ion-col text-right no-padding>
-            <button *ngIf="OnQuoteCheckFavorite(ql)==false" ion-button clear small color="primary" outline #i (click)="OnFavorite(i,ql)" class="favoriteButton">Favorite</button>
-            <button *ngIf="OnQuoteCheckFavorite(ql)"ion-button clear small color="danger" outline #i (click)="OnFavorite(i,ql)" class="favoriteButton">Unfavorite</button>
+          <ion-col text-center no-padding>
+            <button ion-button small color="danger" outline (click)="OnUnfavorite(selectedQuote)" class="modalButton">Unfavorite</button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col text-center no-padding>
+        <button ion-button color="danger" (click)="OnModalClose()" class="modalButton">Close</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

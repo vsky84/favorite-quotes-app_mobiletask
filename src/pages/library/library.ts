@@ -2,7 +2,7 @@ import { Quote } from './../../data/quote.interface';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import quotes from '../../data/quotes';
-import { QuotePage } from '../quote/quote';
+import { QuotesPage } from '../quotes/quotes';
 /**
  * Generated class for the LibraryPage page.
  *
@@ -28,6 +28,6 @@ export class LibraryPage implements OnInit{
   }
   onCategoryClicked(i) {
     console.log(this.quoteCollection[i]);
-    this.navCtrl.push(QuotePage,this.quoteCollection[i]);
+    this.navCtrl.push(QuotesPage,this.quoteCollection[i]);
   }
 }

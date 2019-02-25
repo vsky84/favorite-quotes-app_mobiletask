@@ -1,7 +1,7 @@
 import { QuotesService } from './../../services/quotes';
 import { Quote } from './../../data/quote.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the QuotePage page.
@@ -16,25 +16,21 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'quote.html',
 })
 export class QuotePage {
-  quoteList: Quote[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private quotesService: QuotesService) {
+  selectedQuote: any={'id':"a","person":"b","text":"c"};
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private quotesService: QuotesService, private viewCtrl: ViewController) {
   }
 
-  OnFavorite(btn,quoteChoice) {
+  OnUnfavorite(quoteChoice) {
     const alert = this.alertCtrl.create({
-      title: 'Add Quote',
+      title: 'Unfavorite Quote',
       subTitle:'',
-      message: 'Are you sure you want to add the quote to favorites?',
+      message: 'Are you sure you want to remove the quote from favorites?',
       buttons: [
         {
           text:'Ok',
           handler:()=>{
-            this.quotesService.addQuoteToFavorites(quoteChoice);
-            //if(btn._color === 'primary') { 
-              //this.quotesService.addQuoteToFavorites(quoteChoice);
-              //btn.color='danger';
-              //btn._elementRef.nativeElement.firstChild.childNodes[0].data="Unfavorite";
-            //}
+            this.quotesService.removeQuoteFromFavorites(quoteChoice);
+            this.viewCtrl.dismiss();
           }
         },
         {
@@ -46,25 +42,17 @@ export class QuotePage {
         }
       ]
     });
-    if(btn._color==='danger') {
-      this.quotesService.removeQuoteFromFavorites(quoteChoice);
-    }
-    else {
-      alert.present();
-    }
-    //if(btn._color === 'primary') alert.present();
-    //else {
-      //this.quotesService.removeQuoteFromFavorites(quoteChoice);
-      //btn.color='primary';
-      //btn._elementRef.nativeElement.firstChild.childNodes[0].data="Favorite";
-    //}    
+    alert.present();
   }
   OnQuoteCheckFavorite(quote): boolean {
     return this.quotesService.isFavorite(quote);
   }
+  OnModalClose() {
+    this.viewCtrl.dismiss();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuotePage');
-    this.quoteList=this.navParams.get('quotes');
+    this.selectedQuote=this.navParams.get('quote');
   }
 
 }

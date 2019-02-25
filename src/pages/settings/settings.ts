@@ -1,3 +1,4 @@
+import { SettingsService } from './../../services/settings';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  toggleBackground:boolean = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private settingsSvc:SettingsService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
+  OnToggle(toggle: boolean) {
+    this.settingsSvc.setBackground(toggle);
+  }
 }
