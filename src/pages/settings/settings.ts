@@ -15,12 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-  toggleBackground:boolean = false;
+  toggleBackground:boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, private settingsSvc:SettingsService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+    this.toggleBackground=this.settingsSvc.isAltBackground();
   }
   OnToggle(toggle: boolean) {
     this.settingsSvc.setBackground(toggle);

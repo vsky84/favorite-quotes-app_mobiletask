@@ -49,10 +49,10 @@ export class FavoritesPage {
     });
     alert.present();
   }
-  ionViewDidLoad() {
-    this.favoriteQuoteList=this.quotesService.getAllFavoriteQuotes();
-    console.log('ionViewDidLoad FavoritesPage');
-  }
+  // ionViewDidLoad() {
+  //   this.favoriteQuoteList=this.quotesService.getAllFavoriteQuotes();
+  //   console.log('ionViewDidLoad FavoritesPage');
+  // }
   ionViewWillEnter(){
     this.favoriteQuoteList=this.quotesService.getAllFavoriteQuotes();
     console.log('ionViewWillEnter FavoritesPage');
