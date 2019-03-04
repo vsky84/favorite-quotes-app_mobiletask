@@ -23,7 +23,7 @@ export class SettingsPage {
     console.log('ionViewDidLoad SettingsPage');
     this.toggleBackground=this.settingsSvc.isAltBackground();
   }
-  OnToggle(toggle: boolean) {
+  onToggle(toggle: boolean) {
     this.settingsSvc.setBackground(toggle);
   }
 }

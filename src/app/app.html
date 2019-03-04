@@ -1,20 +1,35 @@
 <ion-menu [content]="sideMenuContent">
-    <ion-header>
-        <ion-toolbar text-center>
-            <h2>Menu</h2>
-        </ion-toolbar>
-    </ion-header>
-        <ion-content>
-            <ion-list>
-                <button ion-item (click)="onLoad(tabsPage)">
-            <ion-icon name="quote" item-left></ion-icon>
-            Quotes
-                </button>
-                    <button ion-item (click)="onLoad(settingsPage)">
-                    <ion-icon name="settings" item-left></ion-icon>
-                    Settings
-                </button>
-            </ion-list>
-        </ion-content>
-    </ion-menu>
-<ion-nav [root]="tabsPage" #sideMenuContent></ion-nav>
+  <ion-header>
+    <ion-toolbar text-center>
+      <h2>Menu</h2>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list *ngIf="getLoggedUser()!=null">
+      <button ion-item (click)="onLoad(tabsPage)">
+        <ion-icon name="quote" item-left></ion-icon>
+        Quotes
+      </button>
+      <button ion-item (click)="onLoad(settingsPage)">
+        <ion-icon name="settings" item-left></ion-icon>
+        Settings
+      </button>
+      <button ion-item (click)="onLogout()">
+        <ion-icon name="exit" item-left></ion-icon>
+        Logout
+      </button>
+    </ion-list>
+    <ion-list *ngIf="getLoggedUser()==null">
+      <button ion-item (click)="onLoad(loginPage)">
+        <ion-icon name="exit" item-left></ion-icon>
+        Sign In
+      </button>
+      <button ion-item (click)="onLoad(signupPage)">
+        <ion-icon name="person" item-left></ion-icon>
+        Sign Up
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #sideMenuContent></ion-nav>
+<!-- <ion-nav [root]="tabsPage" #sideMenuContent></ion-nav> HARDCODED ROOT -->
